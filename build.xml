@@ -1,0 +1,35 @@
+<project name="flatlab" default="jar" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+  <property name="src" location="src"/>
+  <property name="lib" location="lib"/>
+  <property name="bin" location="bin"/>
+  <property name="jar" location="jar"/>
+
+  <target name="resolve">
+    <ivy:retrieve pattern="${lib}/[module]/[artifact]-[revision](-[classifier]).[ext]"/>
+  </target>
+
+  <target name="build">
+    <mkdir dir="${bin}"/>
+    <javac includeantruntime="false" srcdir="${src}" destdir="${bin}">
+      <classpath>
+        <fileset dir="${lib}">
+          <include name="**/*.jar" />
+        </fileset>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="jar" depends="build">
+    <mkdir dir="${jar}"/>
+    <jar destfile="${jar}/${ant.project.name}.jar" basedir="${bin}">
+      <zipgroupfileset includes="**/*.jar" dir="${lib}"/>
+    </jar>
+  </target>
+
+  <target name="clean">
+    <delete dir="${bin}"/>
+    <delete dir="${jar}"/>
+  </target>
+
+</project>
