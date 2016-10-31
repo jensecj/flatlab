@@ -1,3 +1,5 @@
+package flatlab;
+
 import org.lwjgl.*;
 import org.lwjgl.opengl.*;
 import org.lwjgl.glfw.*;
@@ -30,7 +32,6 @@ public class Flatlab {
     public void start() {
         try {
             init();
-
             loop();
 
             // Callbacks.glfwFreeCallbacks(window);
@@ -157,6 +158,7 @@ public class Flatlab {
 
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+            // print fps / update info every seconds
             if (getTime() - last_fps_time > 1000) {
                 fps = fps_counter;
                 fps_counter = 0;

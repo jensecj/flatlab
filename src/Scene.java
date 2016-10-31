@@ -1,3 +1,5 @@
+package flatlab;
+
 public abstract class Scene {
     public void key(int key, int action, int mods) {}
     public void mouse_click(int button, int action, int mods) {}
