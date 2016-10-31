@@ -15,7 +15,7 @@ public class Flatmath {
     }
 
     public static Vector2f PointToWorldSpace(Vector2f point, Vector2f heading, Vector2f side, Vector2f pos) {
-        Matrix3f m = Matrix3f.zero;
+        Matrix3f m = Matrix3f.identity;
         m = Matrix3f.rotate(m, heading, side);
         m = Matrix3f.translate(m, pos);
 
@@ -23,7 +23,7 @@ public class Flatmath {
     }
 
     public static Vector2f VectorToWorldSpace(Vector2f v, Vector2f heading, Vector2f side) {
-        Matrix3f m = Matrix3f.zero;
+        Matrix3f m = Matrix3f.identity;
         m = Matrix3f.rotate(m, heading, side);
 
         return Matrix3f.transform(m, v);
