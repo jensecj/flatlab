@@ -4,6 +4,7 @@
 
   <configurations>
     <conf name="main" description="Required to build"/>
+    <conf name="test" description="Required for testing"/>
   </configurations>
 
   <dependencies>
@@ -14,6 +15,8 @@
       <artifact name="lwjgl-platform" type="jar" extra:classifier="natives-osx"/>
       <artifact name="lwjgl-platform" type="jar" extra:classifier="natives-windows"/>
     </dependency>
+
+    <dependency org="junit" name="junit" rev="4.12" conf="test->default"/>
   </dependencies>
 
 </ivy-module>
