@@ -30,7 +30,7 @@ public class Vector2f {
     public static Vector2f sub(Vector2f a, float scalar) {
         return new Vector2f(a.x - scalar, a.y - scalar);
     }
-    public static Vector2f mult(Vector2f a, float scalar) {
+    public static Vector2f mul(Vector2f a, float scalar) {
         return new Vector2f(a.x * scalar, a.y * scalar);
     }
     public static Vector2f div(Vector2f a, float scalar) {
@@ -45,7 +45,7 @@ public class Vector2f {
     }
     public static Vector2f truncate(Vector2f v, float max) {
         if(Vector2f.length(v) > max)
-            return Vector2f.mult(Vector2f.normalize(v), max);
+            return Vector2f.mul(Vector2f.normalize(v), max);
 
         return v;
     }

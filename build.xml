@@ -1,35 +1,46 @@
 <project name="flatlab" default="jar" xmlns:ivy="antlib:org.apache.ivy.ant">
 
-  <property name="src" location="src"/>
-  <property name="lib" location="lib"/>
-  <property name="bin" location="bin"/>
-  <property name="jar" location="jar"/>
+  <property name="main.src.dir" location="src/main/"/>
+  <property name="main.bin.dir" location="bin/main/"/>
+  <property name="main.lib.dir" location="lib/main/"/>
+
+  <property name="lib.dir" location="lib"/>
+  <property name="jar.dir" location="jar"/>
+
+  <path id="classpath.main.lib">
+    <fileset dir="${main.lib.dir}">
+      <include name="**/*.jar" />
+    </fileset>
+  </path>
 
   <target name="resolve">
-    <ivy:retrieve pattern="${lib}/[module]/[artifact]-[revision](-[classifier]).[ext]"/>
+    <mkdir dir="${lib.dir}"/>
+    <mkdir dir="${main.lib.dir}"/>
+    <ivy:retrieve pattern="${lib.dir}/[conf]/[module]/[artifact]-[revision](-[classifier]).[ext]"/>
+    <delete>
+      <fileset dir="${main.lib.dir}" includes="**/*-javadoc.jar"/>
+      <fileset dir="${main.lib.dir}" includes="**/*-sources.jar"/>
+    </delete>
+
   </target>
 
   <target name="build">
-    <mkdir dir="${bin}"/>
-    <javac includeantruntime="false" srcdir="${src}" destdir="${bin}">
-      <classpath>
-        <fileset dir="${lib}">
-          <include name="**/*.jar" />
-        </fileset>
-      </classpath>
+    <mkdir dir="${main.bin.dir}"/>
+    <javac srcdir="${main.src.dir}" destdir="${main.bin.dir}" includeantruntime="false">
+      <classpath refid="classpath.main.lib"/>
     </javac>
   </target>
 
   <target name="jar" depends="build">
-    <mkdir dir="${jar}"/>
-    <jar destfile="${jar}/${ant.project.name}.jar" basedir="${bin}">
-      <zipgroupfileset includes="**/*.jar" dir="${lib}"/>
+    <mkdir dir="${jar.dir}"/>
+    <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${main.bin.dir}">
+      <zipgroupfileset includes="**/*.jar" dir="${main.lib.dir}"/>
     </jar>
   </target>
 
   <target name="clean">
-    <delete dir="${bin}"/>
-    <delete dir="${jar}"/>
+    <delete dir="${main.bin.dir}"/>
+    <delete dir="${jar.dir}"/>
   </target>
 
 </project>

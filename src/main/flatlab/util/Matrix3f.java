@@ -29,7 +29,7 @@ public class Matrix3f {
         this._33 = _33;
     }
 
-    public static Matrix3f mult(Matrix3f m1, Matrix3f m2) {
+    public static Matrix3f mul(Matrix3f m1, Matrix3f m2) {
         return new Matrix3f((m1._11 * m2._11) + (m1._12 * m2._21) + (m1._13 * m2._31),
                             (m1._11 * m2._12) + (m1._12 * m2._22) + (m1._13 * m2._32),
                             (m1._11 * m2._13) + (m1._12 * m2._23) + (m1._13 * m2._33),
@@ -48,7 +48,7 @@ public class Matrix3f {
                                     0,   1,   0,
                                     v.x, v.y, 1);
 
-        return mult(m, mat);
+        return mul(m, mat);
     }
 
     public static Vector2f transform(Matrix3f m, Vector2f v) {
@@ -61,7 +61,7 @@ public class Matrix3f {
                                     0,   v.y, 0,
                                     0,   0,   1);
 
-        return mult(m, mat);
+        return mul(m, mat);
     }
 
     public static Matrix3f rotate(Matrix3f m, float rotation) {
@@ -72,7 +72,7 @@ public class Matrix3f {
                                     -s, c, 0,
                                     0,  0, 1);
 
-        return mult(m, mat);
+        return mul(m, mat);
     }
 
     public static Matrix3f rotate(Matrix3f m, Vector2f forward, Vector2f side) {
@@ -80,6 +80,6 @@ public class Matrix3f {
                                     side.x,    side.y,    0,
                                     0,         0,         1);
 
-        return mult(m, mat);
+        return mul(m, mat);
     }
 }
