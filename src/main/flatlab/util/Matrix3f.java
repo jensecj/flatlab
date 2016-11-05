@@ -15,6 +15,18 @@ public class Matrix3f {
     public float _21, _22, _23;
     public float _31, _32, _33;
 
+    public static boolean eq(Matrix3f m1, Matrix3f m2)  {
+        return m1._11 == m2._11 &&
+            m1._12 == m2._12 &&
+            m1._13 == m2._13 &&
+            m1._21 == m2._21 &&
+            m1._22 == m2._22 &&
+            m1._23 == m2._23 &&
+            m1._31 == m2._31 &&
+            m1._32 == m2._32 &&
+            m1._33 == m2._33;
+    }
+
     public Matrix3f(float _11, float _12, float _13,
                     float _21, float _22, float _23,
                     float _31, float _32, float _33) {

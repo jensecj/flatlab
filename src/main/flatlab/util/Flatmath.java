@@ -6,6 +6,8 @@ import java.lang.Math;
 public class Flatmath {
     private static Random rng = new Random(42);
 
+    public static final float PI = 3.14159265f;
+
     public static int nexti(int min, int max) {
         return rng.nextInt((max - min) + 1) + min;
     }
@@ -46,5 +48,13 @@ public class Flatmath {
                                   0,         0,      0);
 
         return Matrix3f.transform(m, v);
+    }
+
+    public static float deg2rad(float deg) {
+        return deg * (PI / 180);
+    }
+
+    public static float rad2deg(float rad) {
+        return (rad / PI) * 180;
     }
 }
