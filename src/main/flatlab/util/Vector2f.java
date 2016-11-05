@@ -44,7 +44,11 @@ public class Vector2f {
     }
     public static Vector2f normalize(Vector2f v) {
         float len = length(v);
-        return new Vector2f(v.x / len, v.y / len);
+
+        if(len > 1)
+            return new Vector2f(v.x / len, v.y / len);
+
+        return v;
     }
     public static Vector2f truncate(Vector2f v, float max) {
         if(length(v) > max)
