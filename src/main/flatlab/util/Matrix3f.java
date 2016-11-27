@@ -90,13 +90,6 @@ public class Matrix3f {
                             m._31 * scalar, m._32 * scalar, m._33 * scalar);
     }
 
-    public static Matrix3f mul(Matrix3f m, Vector2f v) {
-        Matrix3f t = new Matrix3f(v.x, 0, 0,
-                                  0, v.y, 0,
-                                  0, 0, 1);
-        return mul(m, t);
-    }
-
     public static Matrix3f transpose(Matrix3f m) {
         return new Matrix3f(m._11, m._21, m._31,
                             m._12, m._22, m._32,
