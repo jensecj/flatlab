@@ -4,6 +4,7 @@ import java.lang.Math;
 
 public class Vector2f {
     public static Vector2f zero = new Vector2f(0, 0);
+    public static Vector2f one = new Vector2f(1, 1);
 
     public float x;
     public float y;
@@ -98,7 +99,6 @@ public class Vector2f {
 
         // return angle(v1, v2) == 0f;
     }
-
     public static boolean eq(Vector2f v1, Vector2f v2) {
         return v1.x == v2.x && v1.y == v2.y;
     }
