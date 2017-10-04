@@ -42,7 +42,7 @@ public class Flatlab {
     }
 
     private void init() {
-        if ( glfwInit() != GL_TRUE )
+        if (!glfwInit())
             throw new IllegalStateException("Unable to initialize GLFW");
 
         // setup window style
@@ -95,7 +95,7 @@ public class Flatlab {
     private void setupInput() {
         glfwSetKeyCallback(window, keyCallback = GLFWKeyCallback.create((window, key, scancode, action, mods) -> {
                     if ( key == GLFW_KEY_Q && action == GLFW_RELEASE )
-                        glfwSetWindowShouldClose(window, GL_TRUE);
+                        glfwSetWindowShouldClose(window, true);
 
                     _scene.key(key, action, mods);
                 }));
@@ -134,7 +134,7 @@ public class Flatlab {
     private void loop() {
         current_time = last_time = last_fps_time = getTime();
 
-        while ( glfwWindowShouldClose(window) == GL_FALSE ) {
+        while ( glfwWindowShouldClose(window) == false ) {
             current_time = getTime();
             logic_ticks = 0;
 
