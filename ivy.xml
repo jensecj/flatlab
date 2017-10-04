@@ -8,12 +8,10 @@
   </configurations>
 
   <dependencies>
-    <dependency org="org.lwjgl" name="lwjgl" rev="3.0.0b" conf="main->default"/>
-
-    <dependency org="org.lwjgl" name="lwjgl-platform" rev="3.0.0b" conf="main->default">
-      <artifact name="lwjgl-platform" type="jar" extra:classifier="natives-linux"/>
-      <artifact name="lwjgl-platform" type="jar" extra:classifier="natives-osx"/>
-      <artifact name="lwjgl-platform" type="jar" extra:classifier="natives-windows"/>
+    <dependency org="org.lwjgl" name="lwjgl" rev="3.1.3" conf="main->default">
+      <artifact name="lwjgl" type="jar" extra:classifier="natives-linux"/>
+      <artifact name="lwjgl" type="jar" extra:classifier="natives-macos"/>
+      <artifact name="lwjgl" type="jar" extra:classifier="natives-windows"/>
     </dependency>
 
     <dependency org="junit" name="junit" rev="4.12" conf="test->default"/>
