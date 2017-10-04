@@ -34,7 +34,6 @@
       <fileset dir="${test.lib.dir}" includes="**/*-javadoc.jar"/>
       <fileset dir="${test.lib.dir}" includes="**/*-javadoc.jar"/>
     </delete>
-
   </target>
 
   <target name="build">
