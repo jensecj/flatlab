@@ -32,7 +32,7 @@
       <fileset dir="${main.lib.dir}" includes="**/*-javadoc.jar"/>
       <fileset dir="${main.lib.dir}" includes="**/*-sources.jar"/>
       <fileset dir="${test.lib.dir}" includes="**/*-javadoc.jar"/>
-      <fileset dir="${test.lib.dir}" includes="**/*-javadoc.jar"/>
+      <fileset dir="${test.lib.dir}" includes="**/*-sources.jar"/>
     </delete>
   </target>
 
