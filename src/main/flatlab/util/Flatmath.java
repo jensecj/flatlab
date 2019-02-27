@@ -57,4 +57,22 @@ public class Flatmath {
     public static float rad2deg(float rad) {
         return (rad / PI) * 180;
     }
+
+    public static float lerp(float a, float b, float f) {
+        return a + f * (b - a);
+    }
+
+    public static float clamp(float min, float max, float f) {
+        if (f < min) return min;
+        if (f > max) return max;
+        return f;
+    }
+
+    public static float map(float value, float min, float max, float newmin, float newmax) {
+        float span = max - min;
+        float newspan = newmax - newmin;
+        float scaled_value = value - min / span;
+
+        return newmin + (scaled_value * newspan);
+    }
 }
