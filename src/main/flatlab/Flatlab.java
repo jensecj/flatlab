@@ -9,7 +9,6 @@ import static org.lwjgl.system.MemoryUtil.*;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class Flatlab {
-
     private long window;
 
     private GLFWErrorCallback errorCallback;
@@ -27,6 +26,8 @@ public class Flatlab {
         _scene = scene;
         _width = _scene.width();
         _height = _scene.height();
+
+        System.out.println("Loading " + _scene);
     }
 
     public void start() {
@@ -55,11 +56,9 @@ public class Flatlab {
             throw new RuntimeException("Failed to create the GLFW window");
 
         GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-        glfwSetWindowPos(
-                         window,
+        glfwSetWindowPos(window,
                          (vidmode.width() - _width) / 2,
-                         (vidmode.height() - _height) / 2
-                         );
+                         (vidmode.height() - _height) / 2);
 
         glfwSetErrorCallback(errorCallback = GLFWErrorCallback.createPrint(System.err));
 
@@ -134,7 +133,7 @@ public class Flatlab {
     private void loop() {
         current_time = last_time = last_fps_time = getTime();
 
-        while ( glfwWindowShouldClose(window) == false ) {
+        while (!glfwWindowShouldClose(window)) {
             current_time = getTime();
             logic_ticks = 0;
 
@@ -156,8 +155,6 @@ public class Flatlab {
                 t += dt;
             }
 
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
             // print fps / update info every seconds
             if (getTime() - last_fps_time > 1000) {
                 fps = fps_counter;
@@ -167,10 +164,12 @@ public class Flatlab {
             }
 
             fps_counter++;
+
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             _scene.draw();
 
-            glfwPollEvents();
             glfwSwapBuffers(window);
+            glfwPollEvents();
         }
     }
 }
